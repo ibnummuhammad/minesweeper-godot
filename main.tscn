@@ -3,3 +3,6 @@
 [node name="main" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
