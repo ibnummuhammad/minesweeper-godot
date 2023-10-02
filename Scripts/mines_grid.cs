@@ -7,20 +7,20 @@ public partial class mines_grid : TileMap
 {
 	int angkaX;
 	int angkaY;
-	Dictionary<string, string> CELLS = new Dictionary<string, string>() {
-		{"1", "Vector2I"},
-		{"2", "Vector2I"},
-		{"3", "Vector2I"},
-		{"4", "Vector2I"},
-		{"5", "Vector2I"},
-		{"6", "Vector2I"},
-		{"7", "Vector2I"},
-		{"8", "Vector2I"},
-		{"CLEAR", "Vector2I"},
-		{"MINE_RED", "Vector2I"},
-		{"FLAG", "Vector2I"},
-		{"MINE", "Vector2I"},
-		{"DEFAULT", "Vector2I"},
+	Dictionary<string, Godot.Vector2I> CELLS = new Dictionary<string, Godot.Vector2I>() {
+		{"1", new Godot.Vector2I(0, 0)},
+		{"2", new Godot.Vector2I(1, 0)},
+		{"3", new Godot.Vector2I(2, 0)},
+		{"4", new Godot.Vector2I(3, 0)},
+		{"5", new Godot.Vector2I(4, 0)},
+		{"6", new Godot.Vector2I(0, 1)},
+		{"7", new Godot.Vector2I(1, 1)},
+		{"8", new Godot.Vector2I(2, 1)},
+		{"CLEAR", new Godot.Vector2I(3, 1)},
+		{"MINE_RED", new Godot.Vector2I(4, 1)},
+		{"FLAG", new Godot.Vector2I(0, 2)},
+		{"MINE", new Godot.Vector2I(1, 2)},
+		{"DEFAULT", new Godot.Vector2I(2, 2)},
 	};
 
 	public int columns = 8;
