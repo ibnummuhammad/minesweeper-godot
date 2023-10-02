@@ -72,6 +72,7 @@ public partial class mines_grid : TileMap
 		foreach (var cell in cellsWithMines)
 		{
 			EraseCell(DEFAULT_LAYER, cell);
+			SetCell(DEFAULT_LAYER, cell, TILE_SET_ID, CELLS["DEFAULT"], 1);
 		}
 	}
 
