@@ -6,7 +6,7 @@ public partial class mines_grid : TileMap
 	int angkaX;
 	int angkaY;
 	Dictionary<string, Godot.Vector2I> CELLS = new Dictionary<string, Godot.Vector2I>();
-	Dictionary<string, int> dictionary = new Dictionary<string, int>();
+	Dictionary<string, string> myDict = new Dictionary<string, string>();
 
 	public int columns = 8;
 	public int rows = 8;
@@ -18,8 +18,21 @@ public partial class mines_grid : TileMap
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		// dictionary.Add("one", 1);
-		// dictionary.Add("two", 2);
+		myDict.Add("Australia", "Canberra");
+		myDict.Add("Belgium", "Brussels");
+		myDict.Add("Netherlands", "Amsterdam");
+		myDict.Add("China", "Beijing");
+		myDict.Add("Russia", "Moscow");
+		myDict.Add("India", "New Delhi");
+
+		GD.Print(myDict["Australia"]);
+
+		// foreach (KeyValuePair<string, string> kvp in myDict)
+		// {
+		// 	GD.Print(kvp.Key);
+		// 	// Console.WriteLine("Key = {0}, Value = {1}",
+		// 	// 				  kvp.Key, kvp.Value);
+		// }
 
 		// int value = dictionary.Get("one");
 
