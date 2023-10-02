@@ -44,7 +44,7 @@ public partial class mines_grid : TileMap
 			for (int j = 0; j < columns; j++)
 			{
 				Godot.Vector2 cell_coord = new Godot.Vector2(i - rows / 2, j - columns / 2);
-				GD.Print(cell_coord);
+				GD.Print(cell_coord.GetType());
 			}
 		}
 	}
