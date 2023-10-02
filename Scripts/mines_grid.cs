@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -60,15 +61,13 @@ public partial class mines_grid : TileMap
 		for (int i = 0; i < numberOfMines; i++)
 		{
 			cellCoordinates = new Vector2(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
-			bool containsfour = cellsWithMines.Contains(cellCoordinates);
 
-			// while (cellsWithMines.Contains(cellCoordinates))
-			// {
-			// 	cellCoordinates = new Vector2(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
-			// 	GD.Print(cellCoordinates);
-			// }
+			while (cellsWithMines.Contains(cellCoordinates))
+			{
+				cellCoordinates = new Vector2(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
+			}
 
-			// cellsWithMines.Append(cellCoordinates);
+			cellsWithMines.Append(cellCoordinates);
 		}
 	}
 
