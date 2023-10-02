@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class mines_grid : TileMap
 {
@@ -13,6 +14,8 @@ public partial class mines_grid : TileMap
 
 	int TILE_SET_ID = 0;
 	int DEFAULT_LAYER = 0;
+
+	Vector2[] cellsWithMines;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -56,7 +59,13 @@ public partial class mines_grid : TileMap
 		for (int i = 0; i < numberOfMines; i++)
 		{
 			Vector2 cellCoordinates = new Vector2(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
-			GD.Print(cellCoordinates);
+
+			while (cellsWithMines.Contains(cellCoordinates))
+			{
+				cellCoordinates = new Vector2(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
+			}
+
+			cellsWithMines.Append(cellCoordinates);
 		}
 	}
 
