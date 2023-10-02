@@ -51,6 +51,7 @@ public partial class mines_grid : TileMap
 		CELLS.Add("DEFAULT", new Godot.Vector2I(2, 2));
 
 		// int value = CELLS.Get("one");
+		GD.Print(CELLS["2"]);
 
 		ClearLayer(DEFAULT_LAYER);
 
