@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 
 public partial class mines_grid : TileMap
@@ -35,14 +36,22 @@ public partial class mines_grid : TileMap
 	{
 		ClearLayer(DEFAULT_LAYER);
 
+		GD.Print("disini");
+		GD.Print(CELLS.ElementAt(0));
+
 		for (int i = 0; i < rows; i++)
 		{
 			for (int j = 0; j < columns; j++)
 			{
 				Godot.Vector2 cell_coord = new Godot.Vector2(i - rows / 2, j - columns / 2);
+				GD.Print(cell_coord);
 			}
 		}
 	}
+
+	// private void SetTileCell(Godot.Vector2 cell_coord)
+	// {
+	// }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
