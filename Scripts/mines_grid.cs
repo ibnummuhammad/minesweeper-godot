@@ -6,7 +6,6 @@ public partial class mines_grid : TileMap
 	int angkaX;
 	int angkaY;
 	Dictionary<string, Godot.Vector2I> CELLS = new Dictionary<string, Godot.Vector2I>();
-	Dictionary<string, string> myDict = new Dictionary<string, string>();
 
 	public int columns = 8;
 	public int rows = 8;
@@ -18,24 +17,6 @@ public partial class mines_grid : TileMap
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		myDict.Add("Australia", "Canberra");
-		myDict.Add("Belgium", "Brussels");
-		myDict.Add("Netherlands", "Amsterdam");
-		myDict.Add("China", "Beijing");
-		myDict.Add("Russia", "Moscow");
-		myDict.Add("India", "New Delhi");
-
-		GD.Print(myDict["Australia"]);
-
-		// foreach (KeyValuePair<string, string> kvp in myDict)
-		// {
-		// 	GD.Print(kvp.Key);
-		// 	// Console.WriteLine("Key = {0}, Value = {1}",
-		// 	// 				  kvp.Key, kvp.Value);
-		// }
-
-		// int value = dictionary.Get("one");
-
 		CELLS.Add("1", new Godot.Vector2I(0, 0));
 		CELLS.Add("2", new Godot.Vector2I(1, 0));
 		CELLS.Add("3", new Godot.Vector2I(2, 0));
@@ -50,34 +31,22 @@ public partial class mines_grid : TileMap
 		CELLS.Add("MINE", new Godot.Vector2I(1, 2));
 		CELLS.Add("DEFAULT", new Godot.Vector2I(2, 2));
 
-		// int value = CELLS.Get("one");
-		GD.Print(CELLS["2"]);
-
 		ClearLayer(DEFAULT_LAYER);
-
-		GD.Print("disini");
-		// foreach (string key in CELLS.Keys())
-		// {
-		// 	Console.WriteLine(key);
-		// }
-		// GD.Print(CELLS);
-		GD.Print(CELLS.Count);
 
 		for (int i = 0; i < rows; i++)
 		{
 			for (int j = 0; j < columns; j++)
 			{
 				Godot.Vector2I cell_coord = new Godot.Vector2I(i - rows / 2, j - columns / 2);
-				// GD.Print(new Godot.Vector2I(i - rows / 2, j - columns / 2));
-				// GD.Print(new Godot.Vector2I(i - rows / 2, j - columns / 2).GetType());
+				SetTileCell(cell_coord, "DEFAULT");
 			}
 		}
 	}
 
-	// private void SetTileCell(Godot.Vector2I cell_coord, string cell_type)
-	// {
-	// 	SetCell(DEFAULT_LAYER, cell_coord, TILE_SET_ID, CELLS.ke);
-	// }
+	private void SetTileCell(Godot.Vector2I cell_coord, string cell_type)
+	{
+		SetCell(DEFAULT_LAYER, cell_coord, TILE_SET_ID, CELLS[cell_type]);
+	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
