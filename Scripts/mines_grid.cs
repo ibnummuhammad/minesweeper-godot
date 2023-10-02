@@ -16,8 +16,7 @@ public partial class mines_grid : TileMap
 	int TILE_SET_ID = 0;
 	int DEFAULT_LAYER = 0;
 
-	Vector2[] cellsWithMines = { };
-	Vector2 cellCoordinates;
+	Vector2I[] cellsWithMines = { };
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -60,14 +59,19 @@ public partial class mines_grid : TileMap
 		RandomNumberGenerator random = new RandomNumberGenerator();
 		for (int i = 0; i < numberOfMines; i++)
 		{
-			cellCoordinates = new Vector2(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
+			var cellCoordinates = new Vector2I(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
 
 			while (cellsWithMines.Contains(cellCoordinates))
 			{
-				cellCoordinates = new Vector2(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
+				cellCoordinates = new Vector2I(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
 			}
 
 			cellsWithMines.Append(cellCoordinates);
+		}
+
+		foreach (var cell in cellsWithMines)
+		{
+			EraseCell(DEFAULT_LAYER, cell);
 		}
 	}
 
