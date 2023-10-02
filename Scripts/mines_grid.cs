@@ -9,7 +9,7 @@ public partial class mines_grid : TileMap
 
 	public int columns = 8;
 	public int rows = 8;
-	public int number_of_mines = 8;
+	public int numberOfMines = 8;
 
 	int TILE_SET_ID = 0;
 	int DEFAULT_LAYER = 0;
@@ -41,11 +41,23 @@ public partial class mines_grid : TileMap
 				SetTileCell(cell_coord, "DEFAULT");
 			}
 		}
+
+		PlaceMine();
 	}
 
 	private void SetTileCell(Godot.Vector2I cell_coord, string cell_type)
 	{
 		SetCell(DEFAULT_LAYER, cell_coord, TILE_SET_ID, CELLS[cell_type]);
+	}
+
+	private void PlaceMine()
+	{
+		RandomNumberGenerator random = new RandomNumberGenerator();
+		for (int i = 0; i < numberOfMines; i++)
+		{
+			Vector2 cellCoordinates = new Vector2(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
+			GD.Print(cellCoordinates);
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
