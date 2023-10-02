@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "w/90GptcF8eJQ1Ny9+anbXhKkyJtk4yIpnsr2bEhW/R7fP3ciiqaRtd+bPQwYR6fffGkjuwG9Z12y5zGoRIYSA==",
+  "success": true,
+  "projectFilePath": "/Users/ibnu.muhammad/Documents/github/ibnummuhammad/minesweeper_godot/minesweeper_godot.csproj",
+  "expectedPackageFiles": [
+    "/Users/ibnu.muhammad/.nuget/packages/godot.sourcegenerators/4.1.1/godot.sourcegenerators.4.1.1.nupkg.sha512",
+    "/Users/ibnu.muhammad/.nuget/packages/godotsharp/4.1.1/godotsharp.4.1.1.nupkg.sha512",
+    "/Users/ibnu.muhammad/.nuget/packages/godotsharpeditor/4.1.1/godotsharpeditor.4.1.1.nupkg.sha512",
+    "/Users/ibnu.muhammad/.nuget/packages/microsoft.netcore.app.ref/6.0.22/microsoft.netcore.app.ref.6.0.22.nupkg.sha512",
+    "/Users/ibnu.muhammad/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.22/microsoft.aspnetcore.app.ref.6.0.22.nupkg.sha512"
+  ],
+  "logs": []
+}

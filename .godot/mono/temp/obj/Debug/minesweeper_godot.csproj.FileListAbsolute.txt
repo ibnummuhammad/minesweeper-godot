@@ -1,0 +1,17 @@
+/Users/ibnu.muhammad/Documents/github/ibnummuhammad/minesweeper_godot/.godot/mono/temp/obj/Debug/minesweeper_godot.csproj.AssemblyReference.cache
+/Users/ibnu.muhammad/Documents/github/ibnummuhammad/minesweeper_godot/.godot/mono/temp/obj/Debug/minesweeper_godot.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ibnu.muhammad/Documents/github/ibnummuhammad/minesweeper_godot/.godot/mono/temp/obj/Debug/minesweeper_godot.AssemblyInfoInputs.cache
+/Users/ibnu.muhammad/Documents/github/ibnummuhammad/minesweeper_godot/.godot/mono/temp/obj/Debug/minesweeper_godot.AssemblyInfo.cs
+/Users/ibnu.muhammad/Documents/github/ibnummuhammad/minesweeper_godot/.godot/mono/temp/obj/Debug/minesweeper_godot.csproj.CoreCompileInputs.cache
+/Users/ibnu.muhammad/Documents/github/ibnummuhammad/minesweeper_godot/.godot/mono/temp/bin/Debug/minesweeper_godot.deps.json
+/Users/ibnu.muhammad/Documents/github/ibnummuhammad/minesweeper_godot/.godot/mono/temp/bin/Debug/minesweeper_godot.runtimeconfig.json
+/Users/ibnu.muhammad/Documents/github/ibnummuhammad/minesweeper_godot/.godot/mono/temp/bin/Debug/minesweeper_godot.dll
+/Users/ibnu.muhammad/Documents/github/ibnummuhammad/minesweeper_godot/.godot/mono/temp/bin/Debug/minesweeper_godot.pdb
+/Users/ibnu.muhammad/Documents/github/ibnummuhammad/minesweeper_godot/.godot/mono/temp/bin/Debug/GodotSharp.dll
+/Users/ibnu.muhammad/Documents/github/ibnummuhammad/minesweeper_godot/.godot/mono/temp/bin/Debug/GodotSharpEditor.dll
+/Users/ibnu.muhammad/Documents/github/ibnummuhammad/minesweeper_godot/.godot/mono/temp/obj/Debug/minesweeper_godot.csproj.CopyComplete
+/Users/ibnu.muhammad/Documents/github/ibnummuhammad/minesweeper_godot/.godot/mono/temp/obj/Debug/minesweeper_godot.dll
+/Users/ibnu.muhammad/Documents/github/ibnummuhammad/minesweeper_godot/.godot/mono/temp/obj/Debug/refint/minesweeper_godot.dll
+/Users/ibnu.muhammad/Documents/github/ibnummuhammad/minesweeper_godot/.godot/mono/temp/obj/Debug/minesweeper_godot.pdb
+/Users/ibnu.muhammad/Documents/github/ibnummuhammad/minesweeper_godot/.godot/mono/temp/obj/Debug/minesweeper_godot.genruntimeconfig.cache
+/Users/ibnu.muhammad/Documents/github/ibnummuhammad/minesweeper_godot/.godot/mono/temp/obj/Debug/ref/minesweeper_godot.dll
