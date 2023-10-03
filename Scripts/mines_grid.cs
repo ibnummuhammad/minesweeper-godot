@@ -80,7 +80,7 @@ public partial class mines_grid : TileMap
 	{
 		// base._Input(@event);
 
-		if (!@event.IsPressed())
+		if (@event == new InputEventMouseButton() || !@event.IsPressed())
 		{
 			return;
 		}
