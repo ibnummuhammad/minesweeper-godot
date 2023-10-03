@@ -76,6 +76,17 @@ public partial class mines_grid : TileMap
 		}
 	}
 
+	public override void _Input(InputEvent @event)
+	{
+		// base._Input(@event);
+
+		if (!@event.IsPressed())
+		{
+			return;
+		}
+		GD.Print(@event);
+	}
+
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
