@@ -87,10 +87,13 @@ public partial class mines_grid : TileMap
 		GD.Print(clickedCellCoor);
 
 		GD.Print(@event.GetType());
-		for (int i = 0; i < @event.GetPropertyList().Count; i++)
-		{
-			GD.Print(@event.GetPropertyList()[i]["name"]);
-		}
+
+		if (@event is InputEventKey eventKey)
+			GD.Print(eventKey);
+		// for (int i = 0; i < @event.GetPropertyList().Count; i++)
+		// {
+		// 	GD.Print(@event.GetPropertyList()[i]["name"]);
+		// }
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
