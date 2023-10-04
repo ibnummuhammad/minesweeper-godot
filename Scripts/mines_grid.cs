@@ -127,7 +127,7 @@ public partial class mines_grid : TileMap
 
 		// GD.Print("diatas");
 
-		var is_dead = cellWithMines.Any(cell => cell.X == cellCoor.X);
+		var is_dead = cellWithMines.Any(cell => cell.X == cellCoor.X) || cellWithMines.Any(cell => cell.Y == cellCoor.Y);
 		GD.Print(is_dead);
 		GD.Print(is_dead.GetType());
 
