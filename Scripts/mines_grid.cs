@@ -112,6 +112,15 @@ public partial class mines_grid : TileMap
 	{
 		GD.Print(cellsWithMines);
 
+		GD.Print("dibawah");
+
+		foreach (var cell in cellsWithMines)
+		{
+			GD.Print(cell);
+		}
+
+		GD.Print("diatas");
+
 		List<int> list = new List<int>() { 1, 2, 3, 4, 5, 6 };
 		List<int> evenNumbers = list.FindAll(x => (x % 2) == 0);
 		foreach (var num in evenNumbers)
