@@ -90,7 +90,6 @@ public partial class mines_grid : TileMap
 		}
 
 		Vector2I clickedCellCoor = LocalToMap(GetLocalMousePosition());
-		GD.Print(clickedCellCoor);
 
 		GD.Print(@event.GetType());
 
@@ -108,9 +107,13 @@ public partial class mines_grid : TileMap
 		}
 	}
 
-	private void OnCellClicked(Vector2I clickedCellCoor)
+	private void OnCellClicked(Vector2I cellCoor)
 	{
 		GD.Print(cellWithMines);
+
+		GD.Print(cellCoor);
+		GD.Print(cellCoor.X);
+		GD.Print(cellCoor.Y);
 
 		GD.Print("dibawah");
 
