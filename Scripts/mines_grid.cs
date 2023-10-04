@@ -78,15 +78,13 @@ public partial class mines_grid : TileMap
 
 	public override void _Input(InputEvent @event)
 	{
-		// base._Input(@event);
-
 		if (@event == new InputEventMouseButton() || !@event.IsPressed())
 		{
 			return;
 		}
-		GD.Print(@event);
 
 		Vector2I clickedCellCoor = LocalToMap(GetLocalMousePosition());
+		GD.Print(clickedCellCoor);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
