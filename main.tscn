@@ -34,6 +34,7 @@ sources/0 = SubResource("TileSetAtlasSource_812ud")
 [node name="main" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(10, 10)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_fmtd2")
