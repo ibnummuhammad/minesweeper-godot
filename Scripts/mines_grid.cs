@@ -136,8 +136,9 @@ public partial class mines_grid : TileMap
 
 	private void HandleCells(Vector2I cellCoor, bool shouldStopAfterMine)
 	{
-		GD.Print(GetCellTileData(DEFAULT_LAYER, cellCoor));
-		GD.Print(GetCellTileData(DEFAULT_LAYER, cellCoor).GetType());
+		TileData tileData = GetCellTileData(DEFAULT_LAYER, cellCoor);
+		GD.Print(tileData);
+		GD.Print(tileData.GetType());
 	}
 
 	private void Lose(Vector2I cellCoor)
