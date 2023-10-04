@@ -136,7 +136,7 @@ public partial class mines_grid : TileMap
 		HandleCells(cellCoor, true);
 	}
 
-	private void HandleCells(Vector2I cellCoor, bool shouldStopAfterMine)
+	private void HandleCells(Vector2I cellCoor, bool shouldStopAfterMine = false)
 	{
 		TileData tileData = GetCellTileData(DEFAULT_LAYER, cellCoor);
 
@@ -152,8 +152,18 @@ public partial class mines_grid : TileMap
 
 		Variant cellHasMine = tileData.GetCustomData("has_mine");
 
+		GetSurroundingCellsMineCount(cellCoor);
+
 		GD.Print("belum kalah");
 		GD.Print("======================");
+	}
+
+	private void GetSurroundingCellsMineCount(Vector2I cellCoor)
+	{
+		int mineCount = 0;
+		var surroundingCells = GetSurroundingCells(cellCoor);
+		GD.Print("ini surroundingCells");
+		GD.Print(surroundingCells);
 	}
 
 	private void Lose(Vector2I cellCoor)
