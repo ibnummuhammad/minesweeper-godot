@@ -129,16 +129,24 @@ public partial class mines_grid : TileMap
 
 		cellsCheckedRecursively.Add(cellCoor);
 		HandleCells(cellCoor, true);
-
-		GD.Print("belum kalah");
-		GD.Print("======================");
 	}
 
 	private void HandleCells(Vector2I cellCoor, bool shouldStopAfterMine)
 	{
 		TileData tileData = GetCellTileData(DEFAULT_LAYER, cellCoor);
+
+		if (tileData == null)
+		{
+			GD.Print("salah klik");
+			GD.Print("======================");
+			return;
+		}
+
 		GD.Print(tileData);
 		GD.Print(tileData.GetType());
+
+		GD.Print("belum kalah");
+		GD.Print("======================");
 	}
 
 	private void Lose(Vector2I cellCoor)
