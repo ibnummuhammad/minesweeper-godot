@@ -166,18 +166,16 @@ public partial class mines_grid : TileMap
 	{
 		int mineCount = 0;
 		List<Vector2I> surroundingCells = GetSurroundingCellsToCheck(cellCoor);
-		GD.Print("ini surroundingCells");
-		GD.Print(surroundingCells);
 
-		// foreach (var cell in surroundingCells)
-		// {
-		// 	TileData tileData = GetCellTileData(DEFAULT_LAYER, cell);
-		// 	if (tileData != null)
-		// 		if (tileData.GetCustomData("has_mine").ToString() == "true")
-		// 		{
-		// 			mineCount = mineCount + 1;
-		// 		}
-		// }
+		foreach (var cell in surroundingCells)
+		{
+			TileData tileData = GetCellTileData(DEFAULT_LAYER, cell);
+			if (tileData != null)
+				if (tileData.GetCustomData("has_mine").ToString() == "true")
+				{
+					mineCount = mineCount + 1;
+				}
+		}
 
 		return mineCount;
 	}
@@ -187,12 +185,13 @@ public partial class mines_grid : TileMap
 		Vector2I targetCell;
 		List<Vector2I> surroundingCells = new List<Vector2I>() { };
 
-		GD.Print("ini targetCell");
 		for (int y = 0; y < 3; y++)
 			for (int x = 0; x < 3; x++)
 			{
+				if (x == 1 && y == 1)
+					continue;
 				targetCell = currentCell + new Vector2I(x - 1, y - 1);
-				GD.Print(targetCell);
+				surroundingCells.Add(targetCell);
 			}
 
 		return surroundingCells;
