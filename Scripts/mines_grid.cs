@@ -175,6 +175,11 @@ public partial class mines_grid : TileMap
 	private void HandleSurroundingCell(Vector2I cellCoord)
 	{
 		GD.Print(cellsCheckedRecursively.Contains(cellCoord));
+		if (cellsCheckedRecursively.Contains(cellCoord) is true)
+			return;
+
+		cellsCheckedRecursively.Add(cellCoord);
+		HandleCells(cellCoord);
 	}
 
 	private int GetSurroundingCellsMineCount(Vector2I cellCoor)
