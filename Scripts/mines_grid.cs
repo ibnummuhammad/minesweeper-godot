@@ -121,12 +121,18 @@ public partial class mines_grid : TileMap
 		{
 			if (cell.X == cellCoor.X && cell.Y == cellCoor.Y)
 			{
-				GD.Print("anda kalah");
+				Lose(cellCoor);
+				GD.Print("======================");
 				return;
 			}
 		}
-		GD.Print("belum return");
+		GD.Print("belum kalah");
 		GD.Print("======================");
+	}
+
+	private void Lose(Vector2I cellCoor)
+	{
+		GD.Print("anda kalah");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
