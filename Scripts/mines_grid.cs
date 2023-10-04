@@ -93,12 +93,18 @@ public partial class mines_grid : TileMap
 			if (eventMouseButton.ButtonIndex.ToString() == "Left")
 			{
 				GD.Print("yang kiri");
+				OnCellClicked(clickedCellCoor);
 			}
 			else if (eventMouseButton.ButtonIndex.ToString() == "Right")
 			{
 				GD.Print("yang kanan");
 			}
 		}
+	}
+
+	private void OnCellClicked(Vector2I clickedCellCoor)
+	{
+		GD.Print(cellsWithMines);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
