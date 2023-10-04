@@ -118,6 +118,11 @@ public partial class mines_grid : TileMap
 	{
 		GD.Print(cellCoor);
 
+		TileData tileData = GetCellTileData(DEFAULT_LAYER, cellCoor);
+		Variant cellHasMine = tileData.GetCustomData("has_mine");
+		GD.Print("ini cellHasMine");
+		GD.Print(cellHasMine);
+
 		foreach (var cell in cellWithMines)
 		{
 			if (cell.X == cellCoor.X && cell.Y == cellCoor.Y)
@@ -142,8 +147,10 @@ public partial class mines_grid : TileMap
 			return;
 		}
 
-		GD.Print(tileData);
-		GD.Print(tileData.GetType());
+		// GD.Print(tileData);
+		// GD.Print(tileData.GetType());
+
+		Variant cellHasMine = tileData.GetCustomData("has_mine");
 
 		GD.Print("belum kalah");
 		GD.Print("======================");
