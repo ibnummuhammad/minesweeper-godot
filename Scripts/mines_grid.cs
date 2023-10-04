@@ -3,6 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+class Dog
+{
+	public string Name { get; set; }
+	public int Age { get; set; }
+}
+
 public partial class mines_grid : TileMap
 {
 	int angkaX;
@@ -111,6 +117,18 @@ public partial class mines_grid : TileMap
 		foreach (var num in evenNumbers)
 		{
 			GD.Print(num);
+		}
+
+		List<Dog> dogs = new List<Dog>() {
+			new Dog { Name = "Rex", Age = 4 },
+			new Dog { Name = "Sean", Age = 0 },
+			new Dog { Name = "Stacy", Age = 3 }
+		 };
+		var names = dogs.Select(x => x.Name);
+		foreach (var name in names)
+		{
+			GD.Print(name);
+
 		}
 	}
 
