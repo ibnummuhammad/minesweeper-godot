@@ -118,11 +118,10 @@ public partial class mines_grid : TileMap
 		GD.Print("ini cellCoor");
 		GD.Print(cellCoor);
 
-		var is_dead = cellWithMines.Any(cell => cell.X == 11) || cellWithMines.Any(cell => cell.Y == cellCoor.Y);
+		var is_dead = cellWithMines.Any(cell => cell.X == cellCoor.X) || cellWithMines.Any(cell => cell.Y == cellCoor.Y);
 		GD.Print(is_dead);
 
-
-		if (cellWithMines.Any(cell => cell.X == cellCoor.X) || cellWithMines.Any(cell => cell.Y == cellCoor.Y))
+		if (is_dead)
 		{
 			GD.Print("anda kalah");
 		}
