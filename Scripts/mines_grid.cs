@@ -122,6 +122,9 @@ public partial class mines_grid : TileMap
 		Variant cellHasMine = tileData.GetCustomData("has_mine");
 		GD.Print("ini cellHasMine");
 		GD.Print(cellHasMine);
+		GD.Print(cellHasMine.GetType());
+		GD.Print(cellHasMine.ToString());
+		GD.Print(cellHasMine.ToString().GetType());
 
 		foreach (var cell in cellWithMines)
 		{
@@ -168,6 +171,14 @@ public partial class mines_grid : TileMap
 		foreach (var cell in surroundingCells)
 		{
 			TileData tileData = GetCellTileData(DEFAULT_LAYER, cell);
+			GD.Print("ini tileData");
+			GD.Print(tileData);
+			GD.Print("ini tileData.GetCustomData('has_mine').ToString()");
+			GD.Print(tileData.GetCustomData("has_mine").ToString());
+			if (tileData != null && tileData.GetCustomData("has_mine").ToString() == "true")
+			{
+				GD.Print("masuk GetCellTileData");
+			}
 		}
 	}
 
