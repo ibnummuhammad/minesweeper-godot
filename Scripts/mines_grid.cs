@@ -85,6 +85,8 @@ public partial class mines_grid : TileMap
 
 		Vector2I clickedCellCoor = LocalToMap(GetLocalMousePosition());
 		GD.Print(clickedCellCoor);
+
+		GD.Print(@event.GetType());
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
