@@ -153,6 +153,11 @@ public partial class mines_grid : TileMap
 		int mineCount = GetSurroundingCellsMineCount(cellCoor);
 		GD.Print(mineCount);
 
+		if (mineCount == 0)
+		{
+			SetTileCell(cellCoor, "CLEAR");
+		}
+
 		GD.Print("belum kalah");
 		GD.Print("======================");
 	}
