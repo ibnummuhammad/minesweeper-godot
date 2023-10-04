@@ -53,6 +53,12 @@ public partial class mines_grid : TileMap
 		}
 
 		PlaceMine();
+
+		foreach (var cell in cellWithMines)
+		{
+			GD.Print(cell);
+		}
+		GD.Print("=====================");
 	}
 
 	private void SetTileCell(Godot.Vector2I cell_coord, string cell_type)
@@ -109,6 +115,7 @@ public partial class mines_grid : TileMap
 
 	private void OnCellClicked(Vector2I cellCoor)
 	{
+		GD.Print("ini cellCoor");
 		GD.Print(cellCoor);
 
 		var is_dead = cellWithMines.Any(cell => cell.X == 11) || cellWithMines.Any(cell => cell.Y == cellCoor.Y);
