@@ -149,7 +149,7 @@ public partial class mines_grid : TileMap
 		if (mineCount == 0)
 		{
 			SetTileCell(cellCoor, "CLEAR");
-			var surroundingCells = GetSurroundingCells(cellCoor);
+			var surroundingCells = GetSurroundingCellsToCheck(cellCoor);
 			foreach (var cell in surroundingCells)
 			{
 				HandleSurroundingCell(cell);
