@@ -66,6 +66,8 @@ public partial class mines_grid : TileMap
 		for (int i = 0; i < numberOfMines; i++)
 		{
 			Vector2I cellCoordinates = new Vector2I(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
+			GD.Print("ini cellCoordinates");
+			GD.Print(cellCoordinates);
 
 			while (cellsWithMines.Contains(cellCoordinates))
 			{
