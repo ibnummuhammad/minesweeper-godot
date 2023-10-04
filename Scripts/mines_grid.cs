@@ -23,6 +23,7 @@ public partial class mines_grid : TileMap
 	int DEFAULT_LAYER = 0;
 
 	Vector2I[] cellsWithMines = { };
+	List<Vector2I> cellWithMines_v2 = new List<Vector2I>() { };
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -68,16 +69,19 @@ public partial class mines_grid : TileMap
 			Vector2I cellCoordinates = new Vector2I(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
 			GD.Print("ini cellCoordinates");
 			GD.Print(cellCoordinates);
+			GD.Print(cellCoordinates.GetType());
 
-			while (cellsWithMines.Contains(cellCoordinates))
+			while (cellWithMines_v2.Contains(cellCoordinates))
 			{
 				cellCoordinates = new Vector2I(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
 			}
 
-			cellsWithMines.Append(cellCoordinates);
+			cellWithMines_v2.Add(cellCoordinates);
+			GD.Print("ini cellWithMines_v2");
+			GD.Print(cellWithMines_v2);
 		}
 
-		foreach (var cell in cellsWithMines)
+		foreach (var cell in cellWithMines_v2)
 		{
 			EraseCell(DEFAULT_LAYER, cell);
 			SetCell(DEFAULT_LAYER, cell, TILE_SET_ID, CELLS["DEFAULT"], 1);
@@ -112,11 +116,11 @@ public partial class mines_grid : TileMap
 
 	private void OnCellClicked(Vector2I clickedCellCoor)
 	{
-		GD.Print(cellsWithMines);
+		GD.Print(cellWithMines_v2);
 
 		GD.Print("dibawah");
 
-		foreach (var cell in cellsWithMines)
+		foreach (var cell in cellWithMines_v2)
 		{
 			GD.Print(cell);
 		}
