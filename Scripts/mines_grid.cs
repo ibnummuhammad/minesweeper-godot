@@ -109,29 +109,33 @@ public partial class mines_grid : TileMap
 
 	private void OnCellClicked(Vector2I cellCoor)
 	{
-		GD.Print(cellWithMines);
+		// GD.Print(cellWithMines);
 
-		GD.Print(cellCoor);
-		GD.Print(cellCoor.X);
-		GD.Print(cellCoor.Y);
+		// GD.Print(cellCoor);
+		// GD.Print(cellCoor.X);
+		// GD.Print(cellCoor.Y);
 
-		GD.Print("dibawah");
+		// GD.Print("dibawah");
 
 		foreach (var cell in cellWithMines)
 		{
-			GD.Print(cell);
-			GD.Print(cell.X);
-			GD.Print(cell.Y);
-			GD.Print("===========");
+			// GD.Print(cell);
+			// GD.Print(cell.X);
+			// GD.Print(cell.Y);
+			// GD.Print("===========");
 		}
 
-		GD.Print("diatas");
+		// GD.Print("diatas");
+
+		var is_dead = cellWithMines.Any(cell => cell.X == cellCoor.X);
+		GD.Print(is_dead);
+		GD.Print(is_dead.GetType());
 
 		List<int> list = new List<int>() { 1, 2, 3, 4, 5, 6 };
 		List<int> evenNumbers = list.FindAll(x => (x % 2) == 0);
 		foreach (var num in evenNumbers)
 		{
-			GD.Print(num);
+			// GD.Print(num);
 		}
 
 		List<Dog> dogs = new List<Dog>() {
@@ -142,7 +146,7 @@ public partial class mines_grid : TileMap
 		var names = dogs.Select(x => x.Name);
 		foreach (var name in names)
 		{
-			GD.Print(name);
+			// GD.Print(name);
 
 		}
 
@@ -154,7 +158,7 @@ public partial class mines_grid : TileMap
 		var newDogsList = dogs1.Select(x => new { Age = x.Age, FirstLetter = x.Name[0] });
 		foreach (var item in newDogsList)
 		{
-			GD.Print(item);
+			// GD.Print(item);
 		}
 
 		string[] namesTest = { "Bob", "Ned", "Amy", "Bill" };
