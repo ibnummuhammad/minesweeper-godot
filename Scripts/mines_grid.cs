@@ -105,7 +105,6 @@ public partial class mines_grid : TileMap
 			GD.Print("======================");
 			if (eventMouseButton.ButtonIndex.ToString() == "Left")
 			{
-				GD.Print("yang kiri");
 				OnCellClicked(clickedCellCoor);
 			}
 			else if (eventMouseButton.ButtonIndex.ToString() == "Right")
@@ -139,19 +138,16 @@ public partial class mines_grid : TileMap
 
 		if (tileData == null)
 		{
-			GD.Print("WRONG!!");
 			return;
 		}
 
 		Variant cellHasMine = tileData.GetCustomData("has_mine");
 
 		int mineCount = GetSurroundingCellsMineCount(cellCoor);
-		GD.Print("ini mineCount");
 		GD.Print(mineCount);
 
 		if (mineCount == 0)
 		{
-			GD.Print("CLEAR!!");
 			SetTileCell(cellCoor, "CLEAR");
 			var surroundingCells = GetSurroundingCells(cellCoor);
 			foreach (var cell in surroundingCells)
@@ -160,7 +156,7 @@ public partial class mines_grid : TileMap
 			}
 		}
 		else
-			GD.Print("WATCH OUT!!");
+			SetTileCell(cellCoor, mineCount.ToString());
 	}
 
 	private void HandleSurroundingCell(Vector2I cellCoord)
