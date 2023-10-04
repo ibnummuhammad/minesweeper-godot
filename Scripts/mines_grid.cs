@@ -130,6 +130,18 @@ public partial class mines_grid : TileMap
 			GD.Print(name);
 
 		}
+
+
+		List<Dog> dogs1 = new List<Dog>() {
+			new Dog { Name = "Rex", Age = 4 },
+			new Dog { Name = "Sean", Age = 0 },
+			new Dog { Name = "Stacy", Age = 3 }
+		};
+		var newDogsList = dogs1.Select(x => new { Age = x.Age, FirstLetter = x.Name[0] });
+		foreach (var item in newDogsList)
+		{
+			GD.Print(item);
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
