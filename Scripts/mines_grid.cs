@@ -184,13 +184,15 @@ public partial class mines_grid : TileMap
 
 	private List<Vector2I> GetSurroundingCellsToCheck(Vector2I currentCell)
 	{
+		Vector2I targetCell;
 		List<Vector2I> surroundingCells = new List<Vector2I>() { };
 
+		GD.Print("ini targetCell");
 		for (int y = 0; y < 3; y++)
 			for (int x = 0; x < 3; x++)
 			{
-				GD.Print("ini currentCell");
-				GD.Print(currentCell);
+				targetCell = currentCell + new Vector2I(x - 1, y - 1);
+				GD.Print(targetCell);
 			}
 
 		return surroundingCells;
