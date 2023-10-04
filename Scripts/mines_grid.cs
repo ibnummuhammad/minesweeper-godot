@@ -165,20 +165,35 @@ public partial class mines_grid : TileMap
 	private int GetSurroundingCellsMineCount(Vector2I cellCoor)
 	{
 		int mineCount = 0;
-		var surroundingCells = GetSurroundingCells(cellCoor);
+		List<Vector2I> surroundingCells = GetSurroundingCellsToCheck(cellCoor);
+		GD.Print("ini surroundingCells");
 		GD.Print(surroundingCells);
 
-		foreach (var cell in surroundingCells)
-		{
-			TileData tileData = GetCellTileData(DEFAULT_LAYER, cell);
-			if (tileData != null)
-				if (tileData.GetCustomData("has_mine").ToString() == "true")
-				{
-					mineCount = mineCount + 1;
-				}
-		}
+		// foreach (var cell in surroundingCells)
+		// {
+		// 	TileData tileData = GetCellTileData(DEFAULT_LAYER, cell);
+		// 	if (tileData != null)
+		// 		if (tileData.GetCustomData("has_mine").ToString() == "true")
+		// 		{
+		// 			mineCount = mineCount + 1;
+		// 		}
+		// }
 
 		return mineCount;
+	}
+
+	private List<Vector2I> GetSurroundingCellsToCheck(Vector2I currentCell)
+	{
+		List<Vector2I> surroundingCells = new List<Vector2I>() { };
+
+		for (int y = 0; y < 3; y++)
+			for (int x = 0; x < 3; x++)
+			{
+				GD.Print("ini currentCell");
+				GD.Print(currentCell);
+			}
+
+		return surroundingCells;
 	}
 
 	private void Lose(Vector2I cellCoor)
