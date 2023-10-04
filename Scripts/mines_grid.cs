@@ -55,6 +55,10 @@ public partial class mines_grid : TileMap
 
 		PlaceMine();
 
+		foreach (var cell in cellWithMines)
+		{
+			GD.Print(cell);
+		}
 		GD.Print("=====================");
 	}
 
@@ -98,6 +102,7 @@ public partial class mines_grid : TileMap
 
 		if (@event is InputEventMouseButton eventMouseButton)
 		{
+			GD.Print("======================");
 			if (eventMouseButton.ButtonIndex.ToString() == "Left")
 			{
 				GD.Print("yang kiri");
@@ -134,8 +139,7 @@ public partial class mines_grid : TileMap
 
 		if (tileData == null)
 		{
-			GD.Print("salah klik");
-			GD.Print("======================");
+			GD.Print("WRONG!!");
 			return;
 		}
 
@@ -157,8 +161,6 @@ public partial class mines_grid : TileMap
 		}
 		else
 			GD.Print("WATCH OUT!!");
-
-		GD.Print("======================");
 	}
 
 	private void HandleSurroundingCell(Vector2I cellCoord)
@@ -208,7 +210,6 @@ public partial class mines_grid : TileMap
 	private void Lose(Vector2I cellCoor)
 	{
 		GD.Print("BOMB!!");
-		GD.Print("======================");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
