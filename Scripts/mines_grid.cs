@@ -55,10 +55,6 @@ public partial class mines_grid : TileMap
 
 		PlaceMine();
 
-		foreach (var cell in cellWithMines)
-		{
-			GD.Print(cell);
-		}
 		GD.Print("=====================");
 	}
 
@@ -116,8 +112,6 @@ public partial class mines_grid : TileMap
 
 	private void OnCellClicked(Vector2I cellCoor)
 	{
-		GD.Print(cellCoor);
-
 		TileData tileData = GetCellTileData(DEFAULT_LAYER, cellCoor);
 		Variant cellHasMine = tileData.GetCustomData("has_mine");
 
@@ -148,6 +142,7 @@ public partial class mines_grid : TileMap
 		Variant cellHasMine = tileData.GetCustomData("has_mine");
 
 		int mineCount = GetSurroundingCellsMineCount(cellCoor);
+		GD.Print("ini mineCount");
 		GD.Print(mineCount);
 
 		if (mineCount == 0)
@@ -155,26 +150,19 @@ public partial class mines_grid : TileMap
 			GD.Print("CLEAR!!");
 			SetTileCell(cellCoor, "CLEAR");
 			var surroundingCells = GetSurroundingCells(cellCoor);
-			GD.Print("ini cell surroundingCells");
 			foreach (var cell in surroundingCells)
 			{
-				GD.Print(cell);
 				HandleSurroundingCell(cell);
 			}
 		}
 		else
 			GD.Print("WATCH OUT!!");
 
-		GD.Print("++++++++++++++++++++++");
-		GD.Print("ini cellsCheckedRecursively");
-		foreach (var cell in cellsCheckedRecursively)
-			GD.Print(cell);
 		GD.Print("======================");
 	}
 
 	private void HandleSurroundingCell(Vector2I cellCoord)
 	{
-		GD.Print(cellsCheckedRecursively.Contains(cellCoord));
 		if (cellsCheckedRecursively.Contains(cellCoord) is true)
 			return;
 
