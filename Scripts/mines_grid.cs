@@ -117,6 +117,9 @@ public partial class mines_grid : TileMap
 		foreach (var cell in cellWithMines)
 		{
 			GD.Print(cell);
+			GD.Print(cell.X);
+			GD.Print(cell.Y);
+			GD.Print("===========");
 		}
 
 		GD.Print("diatas");
