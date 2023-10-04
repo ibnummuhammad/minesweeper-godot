@@ -146,7 +146,6 @@ public partial class mines_grid : TileMap
 
 		}
 
-
 		List<Dog> dogs1 = new List<Dog>() {
 			new Dog { Name = "Rex", Age = 4 },
 			new Dog { Name = "Sean", Age = 0 },
@@ -157,6 +156,10 @@ public partial class mines_grid : TileMap
 		{
 			GD.Print(item);
 		}
+
+		string[] namesTest = { "Bob", "Ned", "Amy", "Bill" };
+		var result = namesTest.Any(n => n.StartsWith("B"));
+		GD.Print(result);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
