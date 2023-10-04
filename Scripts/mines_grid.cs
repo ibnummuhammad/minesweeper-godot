@@ -92,6 +92,8 @@ public partial class mines_grid : TileMap
 		{
 			GD.Print(eventMouseButton.ButtonIndex);
 			GD.Print(eventMouseButton.ButtonIndex.GetType());
+			GD.Print(eventMouseButton.ButtonIndex.ToString());
+			GD.Print(eventMouseButton.ButtonIndex.ToString().GetType());
 		}
 	}
 
