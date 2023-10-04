@@ -122,8 +122,10 @@ public partial class mines_grid : TileMap
 			if (cell.X == cellCoor.X && cell.Y == cellCoor.Y)
 			{
 				GD.Print("anda kalah");
+				return;
 			}
 		}
+		GD.Print("belum return");
 		GD.Print("======================");
 	}
 
