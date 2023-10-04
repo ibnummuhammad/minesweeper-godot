@@ -127,9 +127,9 @@ public partial class mines_grid : TileMap
 
 		// GD.Print("diatas");
 
-		var is_dead = cellWithMines.Any(cell => cell.X == cellCoor.X) || cellWithMines.Any(cell => cell.Y == cellCoor.Y);
+		var is_dead = cellWithMines.Any(cell => cell.X == 11) || cellWithMines.Any(cell => cell.Y == cellCoor.Y);
 		GD.Print(is_dead);
-		GD.Print(is_dead.GetType());
+		// GD.Print(is_dead.GetType());
 
 		List<int> list = new List<int>() { 1, 2, 3, 4, 5, 6 };
 		List<int> evenNumbers = list.FindAll(x => (x % 2) == 0);
@@ -163,7 +163,7 @@ public partial class mines_grid : TileMap
 
 		string[] namesTest = { "Bob", "Ned", "Amy", "Bill" };
 		var result = namesTest.Any(n => n.StartsWith("B"));
-		GD.Print(result);
+		// GD.Print(result);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
