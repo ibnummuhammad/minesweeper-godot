@@ -164,6 +164,11 @@ public partial class mines_grid : TileMap
 		var surroundingCells = GetSurroundingCells(cellCoor);
 		GD.Print("ini surroundingCells");
 		GD.Print(surroundingCells);
+
+		foreach (var cell in surroundingCells)
+		{
+			TileData tileData = GetCellTileData(DEFAULT_LAYER, cell);
+		}
 	}
 
 	private void Lose(Vector2I cellCoor)
