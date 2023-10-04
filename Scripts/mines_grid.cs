@@ -115,10 +115,9 @@ public partial class mines_grid : TileMap
 
 	private void OnCellClicked(Vector2I cellCoor)
 	{
-		GD.Print("ini cellCoor");
 		GD.Print(cellCoor);
 
-		var is_dead = cellWithMines.Any(cell => cell.X == cellCoor.X) || cellWithMines.Any(cell => cell.Y == cellCoor.Y);
+		var is_dead = cellWithMines.Any(cell => cell.X == cellCoor.X) && cellWithMines.Any(cell => cell.Y == cellCoor.Y);
 		GD.Print(is_dead);
 
 		if (is_dead)
