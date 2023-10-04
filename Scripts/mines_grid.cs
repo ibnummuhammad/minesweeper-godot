@@ -141,10 +141,12 @@ public partial class mines_grid : TileMap
 			return;
 		}
 
-		Variant cellHasMine = tileData.GetCustomData("has_mine");
+		bool cellHasMine = (bool)tileData.GetCustomData("has_mine");
+
+		if (cellHasMine && shouldStopAfterMine)
+			return;
 
 		int mineCount = GetSurroundingCellsMineCount(cellCoor);
-		GD.Print(mineCount);
 
 		if (mineCount == 0)
 		{
