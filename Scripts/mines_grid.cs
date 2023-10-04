@@ -89,7 +89,7 @@ public partial class mines_grid : TileMap
 		GD.Print(@event.GetType());
 		for (int i = 0; i < @event.GetPropertyList().Count; i++)
 		{
-			GD.Print(@event.GetPropertyList()[i]);
+			GD.Print(@event.GetPropertyList()[i].GetType());
 		}
 	}
 
