@@ -162,15 +162,19 @@ public partial class mines_grid : TileMap
 				HandleSurroundingCell(cell);
 			}
 		}
+		else
+			GD.Print("WATCH OUT!!");
 
-		GD.Print("belum kalah");
+		GD.Print("++++++++++++++++++++++");
+		GD.Print("ini cellsCheckedRecursively");
+		foreach (var cell in cellsCheckedRecursively)
+			GD.Print(cell);
 		GD.Print("======================");
 	}
 
 	private void HandleSurroundingCell(Vector2I cellCoord)
 	{
-		// GD.Print(cellCoord);
-		// cellsCheckedRecursively.Contains(cellCoord);
+		GD.Print(cellsCheckedRecursively.Contains(cellCoord));
 	}
 
 	private int GetSurroundingCellsMineCount(Vector2I cellCoor)
