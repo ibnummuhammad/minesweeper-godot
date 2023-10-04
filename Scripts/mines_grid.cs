@@ -117,13 +117,14 @@ public partial class mines_grid : TileMap
 	{
 		GD.Print(cellCoor);
 
-		var is_dead = cellWithMines.Any(cell => cell.X == cellCoor.X) && cellWithMines.Any(cell => cell.Y == cellCoor.Y);
-		GD.Print(is_dead);
-
-		if (is_dead)
+		foreach (var cell in cellWithMines)
 		{
-			GD.Print("anda kalah");
+			if (cell.X == cellCoor.X && cell.Y == cellCoor.Y)
+			{
+				GD.Print("anda kalah");
+			}
 		}
+		GD.Print("======================");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
