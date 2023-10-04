@@ -88,8 +88,8 @@ public partial class mines_grid : TileMap
 
 		GD.Print(@event.GetType());
 
-		if (@event is InputEventKey eventKey)
-			GD.Print(eventKey);
+		if (@event is InputEventMouseButton eventMouseButton)
+			GD.Print(eventMouseButton);
 		// for (int i = 0; i < @event.GetPropertyList().Count; i++)
 		// {
 		// 	GD.Print(@event.GetPropertyList()[i]["name"]);
