@@ -98,11 +98,8 @@ public partial class mines_grid : TileMap
 
 		Vector2I clickedCellCoor = LocalToMap(GetLocalMousePosition());
 
-		GD.Print(@event.GetType());
-
 		if (@event is InputEventMouseButton eventMouseButton)
 		{
-			GD.Print("======================");
 			if (eventMouseButton.ButtonIndex.ToString() == "Left")
 			{
 				OnCellClicked(clickedCellCoor);
@@ -111,6 +108,8 @@ public partial class mines_grid : TileMap
 			{
 				GD.Print("yang kanan");
 			}
+			else
+				GD.Print(@event.GetType());
 		}
 	}
 
