@@ -145,9 +145,6 @@ public partial class mines_grid : TileMap
 			return;
 		}
 
-		// GD.Print(tileData);
-		// GD.Print(tileData.GetType());
-
 		Variant cellHasMine = tileData.GetCustomData("has_mine");
 
 		int mineCount = GetSurroundingCellsMineCount(cellCoor);
@@ -155,11 +152,25 @@ public partial class mines_grid : TileMap
 
 		if (mineCount == 0)
 		{
+			GD.Print("CLEAR!!");
 			SetTileCell(cellCoor, "CLEAR");
+			var surroundingCells = GetSurroundingCells(cellCoor);
+			GD.Print("ini cell surroundingCells");
+			foreach (var cell in surroundingCells)
+			{
+				GD.Print(cell);
+				HandleSurroundingCell(cell);
+			}
 		}
 
 		GD.Print("belum kalah");
 		GD.Print("======================");
+	}
+
+	private void HandleSurroundingCell(Vector2I cellCoord)
+	{
+		// GD.Print(cellCoord);
+		// cellsCheckedRecursively.Contains(cellCoord);
 	}
 
 	private int GetSurroundingCellsMineCount(Vector2I cellCoor)
@@ -199,7 +210,7 @@ public partial class mines_grid : TileMap
 
 	private void Lose(Vector2I cellCoor)
 	{
-		GD.Print("anda kalah");
+		GD.Print("BOMB!!");
 		GD.Print("======================");
 	}
 
