@@ -90,10 +90,14 @@ public partial class mines_grid : TileMap
 
 		if (@event is InputEventMouseButton eventMouseButton)
 		{
-			GD.Print(eventMouseButton.ButtonIndex);
-			GD.Print(eventMouseButton.ButtonIndex.GetType());
-			GD.Print(eventMouseButton.ButtonIndex.ToString());
-			GD.Print(eventMouseButton.ButtonIndex.ToString().GetType());
+			if (eventMouseButton.ButtonIndex.ToString() == "Left")
+			{
+				GD.Print("yang kiri");
+			}
+			else if (eventMouseButton.ButtonIndex.ToString() == "Right")
+			{
+				GD.Print("yang kanan");
+			}
 		}
 	}
 
