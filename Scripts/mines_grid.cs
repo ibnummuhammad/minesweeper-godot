@@ -22,6 +22,7 @@ public partial class mines_grid : TileMap
 	int TILE_SET_ID = 0;
 	int DEFAULT_LAYER = 0;
 
+	List<Vector2I> cellsCheckedRecursively = new List<Vector2I>() { };
 	List<Vector2I> cellWithMines = new List<Vector2I>() { };
 
 	// Called when the node enters the scene tree for the first time.
@@ -122,17 +123,27 @@ public partial class mines_grid : TileMap
 			if (cell.X == cellCoor.X && cell.Y == cellCoor.Y)
 			{
 				Lose(cellCoor);
-				GD.Print("======================");
 				return;
 			}
 		}
+
+		cellsCheckedRecursively.Add(cellCoor);
+		HandleCells(cellCoor, true);
+
 		GD.Print("belum kalah");
 		GD.Print("======================");
+	}
+
+	private void HandleCells(Vector2I cellCoor, bool shouldStopAfterMine)
+	{
+		GD.Print(GetCellTileData(DEFAULT_LAYER, cellCoor));
+		GD.Print(GetCellTileData(DEFAULT_LAYER, cellCoor).GetType());
 	}
 
 	private void Lose(Vector2I cellCoor)
 	{
 		GD.Print("anda kalah");
+		GD.Print("======================");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
