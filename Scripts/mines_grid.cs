@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 
 public partial class mines_grid : TileMap
@@ -23,7 +24,8 @@ public partial class mines_grid : TileMap
 	int TILE_SET_ID = 0;
 	int DEFAULT_LAYER = 0;
 
-	List<Vector2I> cellWithMines = new List<Vector2I>() { };
+	List<Vector2I> cellsWithMines = new List<Vector2I>() { };
+	List<Vector2I> cellsWithFlags = new List<Vector2I>() { };
 	List<Vector2I> cellsCheckedRecursively = new List<Vector2I>() { };
 	bool isGameFinished = false;
 
@@ -57,7 +59,7 @@ public partial class mines_grid : TileMap
 
 		PlaceMine();
 
-		foreach (var cell in cellWithMines)
+		foreach (var cell in cellsWithMines)
 		{
 			GD.Print(cell);
 		}
@@ -76,15 +78,15 @@ public partial class mines_grid : TileMap
 		{
 			Vector2I cellCoordinates = new Vector2I(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
 
-			while (cellWithMines.Contains(cellCoordinates))
+			while (cellsWithMines.Contains(cellCoordinates))
 			{
 				cellCoordinates = new Vector2I(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
 			}
 
-			cellWithMines.Add(cellCoordinates);
+			cellsWithMines.Add(cellCoordinates);
 		}
 
-		foreach (var cell in cellWithMines)
+		foreach (var cell in cellsWithMines)
 		{
 			EraseCell(DEFAULT_LAYER, cell);
 			SetCell(DEFAULT_LAYER, cell, TILE_SET_ID, CELLS["DEFAULT"], 1);
@@ -108,34 +110,39 @@ public partial class mines_grid : TileMap
 			}
 			else if (eventMouseButton.ButtonIndex.ToString() == "Right")
 			{
-				GD.Print("yang kanan");
+				PlaceFlag(clickedCellCoor);
 			}
 			else
 				GD.Print(@event.GetType());
 		}
 	}
 
-	private void OnCellClicked(Vector2I cellCoor)
+	private void PlaceFlag(Vector2I cellCoord)
 	{
-		TileData tileData = GetCellTileData(DEFAULT_LAYER, cellCoor);
+		TileData tileData = GetCellTileData(DEFAULT_LAYER, cellCoord);
+	}
+
+	private void OnCellClicked(Vector2I cellCoord)
+	{
+		TileData tileData = GetCellTileData(DEFAULT_LAYER, cellCoord);
 		Variant cellHasMine = tileData.GetCustomData("has_mine");
 
-		foreach (var cell in cellWithMines)
+		foreach (var cell in cellsWithMines)
 		{
-			if (cell.X == cellCoor.X && cell.Y == cellCoor.Y)
+			if (cell.X == cellCoord.X && cell.Y == cellCoord.Y)
 			{
-				Lose(cellCoor);
+				Lose(cellCoord);
 				return;
 			}
 		}
 
-		cellsCheckedRecursively.Add(cellCoor);
-		HandleCells(cellCoor, true);
+		cellsCheckedRecursively.Add(cellCoord);
+		HandleCells(cellCoord, true);
 	}
 
-	private void HandleCells(Vector2I cellCoor, bool shouldStopAfterMine = false)
+	private void HandleCells(Vector2I cellCoord, bool shouldStopAfterMine = false)
 	{
-		TileData tileData = GetCellTileData(DEFAULT_LAYER, cellCoor);
+		TileData tileData = GetCellTileData(DEFAULT_LAYER, cellCoord);
 
 		if (tileData == null)
 		{
@@ -147,19 +154,19 @@ public partial class mines_grid : TileMap
 		if (cellHasMine && shouldStopAfterMine)
 			return;
 
-		int mineCount = GetSurroundingCellsMineCount(cellCoor);
+		int mineCount = GetSurroundingCellsMineCount(cellCoord);
 
 		if (mineCount == 0)
 		{
-			SetTileCell(cellCoor, "CLEAR");
-			var surroundingCells = GetSurroundingCellsToCheck(cellCoor);
+			SetTileCell(cellCoord, "CLEAR");
+			var surroundingCells = GetSurroundingCellsToCheck(cellCoord);
 			foreach (var cell in surroundingCells)
 			{
 				HandleSurroundingCell(cell);
 			}
 		}
 		else
-			SetTileCell(cellCoor, mineCount.ToString());
+			SetTileCell(cellCoord, mineCount.ToString());
 	}
 
 	private void HandleSurroundingCell(Vector2I cellCoord)
@@ -171,10 +178,10 @@ public partial class mines_grid : TileMap
 		HandleCells(cellCoord);
 	}
 
-	private int GetSurroundingCellsMineCount(Vector2I cellCoor)
+	private int GetSurroundingCellsMineCount(Vector2I cellCoord)
 	{
 		int mineCount = 0;
-		List<Vector2I> surroundingCells = GetSurroundingCellsToCheck(cellCoor);
+		List<Vector2I> surroundingCells = GetSurroundingCellsToCheck(cellCoord);
 
 		foreach (var cell in surroundingCells)
 		{
@@ -206,16 +213,16 @@ public partial class mines_grid : TileMap
 		return surroundingCells;
 	}
 
-	private void Lose(Vector2I cellCoor)
+	private void Lose(Vector2I cellCoord)
 	{
 		GD.Print("BOMB!!");
 		// EmitSignal(nameof(GameLost));
 		isGameFinished = true;
 
-		foreach (var cell in cellWithMines)
+		foreach (var cell in cellsWithMines)
 			SetTileCell(cell, "MINE");
 
-		SetTileCell(cellCoor, "MINE_RED");
+		SetTileCell(cellCoord, "MINE_RED");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
