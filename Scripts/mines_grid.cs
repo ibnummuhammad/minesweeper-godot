@@ -123,11 +123,7 @@ public partial class mines_grid : TileMap
 		{
 			SetTileCell(cellCoord, "DEFAULT");
 			cellsWithFlags.Remove(cellCoord);
-			GD.Print("ini cellsWithFlags");
-			GD.Print(cellsWithFlags);
 			flagsPlaced = flagsPlaced - 1;
-			GD.Print("ini flagsPlaced");
-			GD.Print(flagsPlaced);
 		}
 		else if (isEmptyCell)
 		{
@@ -136,11 +132,7 @@ public partial class mines_grid : TileMap
 
 			flagsPlaced = flagsPlaced + 1;
 			SetTileCell(cellCoord, "FLAG");
-			GD.Print("ini flagsPlaced");
-			GD.Print(flagsPlaced);
 			cellsWithFlags.Add(cellCoord);
-			GD.Print("ini cellsWithFlags");
-			GD.Print(cellsWithFlags);
 		}
 	}
 
