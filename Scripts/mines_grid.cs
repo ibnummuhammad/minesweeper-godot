@@ -11,6 +11,15 @@ class Dog
 
 public partial class mines_grid : TileMap
 {
+	// [Signal]
+	// delegate void FlagChange();
+
+	// [Signal]
+	// delegate void GameLost();
+
+	// [Signal]
+	// delegate void GameWon();
+
 	int angkaX;
 	int angkaY;
 	Dictionary<string, Godot.Vector2I> CELLS = new Dictionary<string, Godot.Vector2I>();
@@ -22,8 +31,9 @@ public partial class mines_grid : TileMap
 	int TILE_SET_ID = 0;
 	int DEFAULT_LAYER = 0;
 
-	List<Vector2I> cellsCheckedRecursively = new List<Vector2I>() { };
 	List<Vector2I> cellWithMines = new List<Vector2I>() { };
+	List<Vector2I> cellsCheckedRecursively = new List<Vector2I>() { };
+	bool isGameFinished = false;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -207,6 +217,11 @@ public partial class mines_grid : TileMap
 	private void Lose(Vector2I cellCoor)
 	{
 		GD.Print("BOMB!!");
+		// EmitSignal(nameof(GameLost));
+		isGameFinished = true;
+
+		foreach (var cell in cellWithMines)
+			SetTileCell(cell, "MINE");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
