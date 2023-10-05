@@ -136,7 +136,10 @@ public partial class mines_grid : TileMap
 		}
 
 		int count = 0;
-
+		foreach (var flagCell in cellsWithFlags)
+			foreach (var mineCell in cellsWithMines)
+				if (flagCell.X == mineCell.X && flagCell.Y == mineCell.Y)
+					count = count + 1;
 		if (count == cellsWithMines.Count)
 			GD.Print("WIN!");
 	}
