@@ -134,6 +134,11 @@ public partial class mines_grid : TileMap
 			SetTileCell(cellCoord, "FLAG");
 			cellsWithFlags.Add(cellCoord);
 		}
+
+		int count = 0;
+
+		if (count == cellsWithMines.Count)
+			GD.Print("WIN!");
 	}
 
 	private void OnCellClicked(Vector2I cellCoord)
