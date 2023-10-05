@@ -214,6 +214,8 @@ public partial class mines_grid : TileMap
 
 		foreach (var cell in cellWithMines)
 			SetTileCell(cell, "MINE");
+
+		SetTileCell(cellCoor, "MINE_RED");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
