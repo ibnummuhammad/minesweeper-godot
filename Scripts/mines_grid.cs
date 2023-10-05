@@ -180,9 +180,16 @@ public partial class mines_grid : TileMap
 
 		int mineCount = GetSurroundingCellsMineCount(cellCoord);
 
-		if (mineCount == 0)
+		if (mineCount == 0 && !cellsWithFlags.Contains(cellCoord))
 		{
 			SetTileCell(cellCoord, "CLEAR");
+			var surroundingCells = GetSurroundingCellsToCheck(cellCoord);
+			foreach (var cell in surroundingCells)
+				HandleSurroundingCell(cell);
+		}
+		else if (cellsWithFlags.Contains(cellCoord))
+		{
+			SetTileCell(cellCoord, "FLAG");
 			var surroundingCells = GetSurroundingCellsToCheck(cellCoord);
 			foreach (var cell in surroundingCells)
 				HandleSurroundingCell(cell);

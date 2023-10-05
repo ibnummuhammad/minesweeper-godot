@@ -40,4 +40,3 @@ zoom = Vector2(10, 10)
 tile_set = SubResource("TileSet_fmtd2")
 format = 2
 script = ExtResource("2_5a22y")
-numberOfMines = 1
