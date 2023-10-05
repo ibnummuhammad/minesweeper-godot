@@ -115,6 +115,10 @@ public partial class mines_grid : TileMap
 		TileData tileData = GetCellTileData(DEFAULT_LAYER, cellCoord);
 		Vector2I atlastCoordinates = GetCellAtlasCoords(DEFAULT_LAYER, cellCoord);
 		bool isEmptyCell = atlastCoordinates == new Vector2I(2, 2);
+		bool isFlagCell = atlastCoordinates == new Vector2I(0, 2);
+
+		if (!isEmptyCell && !isFlagCell)
+			return;
 	}
 
 	private void OnCellClicked(Vector2I cellCoord)
