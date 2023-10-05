@@ -14,9 +14,14 @@ public partial class mines_grid : TileMap
 
 	Dictionary<string, Godot.Vector2I> CELLS = new Dictionary<string, Godot.Vector2I>();
 
-	public int columns = 8;
-	public int rows = 8;
-	public int numberOfMines = 8;
+	[Export]
+	int columns = 8;
+
+	[Export]
+	int rows = 8;
+
+	[Export]
+	int numberOfMines = 8;
 
 	int TILE_SET_ID = 0;
 	int DEFAULT_LAYER = 0;
@@ -141,7 +146,13 @@ public partial class mines_grid : TileMap
 				if (flagCell.X == mineCell.X && flagCell.Y == mineCell.Y)
 					count = count + 1;
 		if (count == cellsWithMines.Count)
-			GD.Print("WIN!");
+			Win();
+	}
+
+	private void Win()
+	{
+		GD.Print("WIN");
+		isGameFinished = true;
 	}
 
 	private void OnCellClicked(Vector2I cellCoord)
