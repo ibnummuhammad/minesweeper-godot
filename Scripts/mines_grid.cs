@@ -12,8 +12,6 @@ public partial class mines_grid : TileMap
 	// [Signal]
 	// delegate void GameWon();
 
-	int angkaX;
-	int angkaY;
 	Dictionary<string, Godot.Vector2I> CELLS = new Dictionary<string, Godot.Vector2I>();
 
 	public int columns = 8;
@@ -22,6 +20,7 @@ public partial class mines_grid : TileMap
 
 	int TILE_SET_ID = 0;
 	int DEFAULT_LAYER = 0;
+	int flagsPlaced = 0;
 
 	List<Vector2I> cellsWithMines = new List<Vector2I>() { };
 	List<Vector2I> cellsWithFlags = new List<Vector2I>() { };
@@ -51,17 +50,17 @@ public partial class mines_grid : TileMap
 		{
 			for (int j = 0; j < columns; j++)
 			{
-				Godot.Vector2I cell_coord = new Godot.Vector2I(i - rows / 2, j - columns / 2);
-				SetTileCell(cell_coord, "DEFAULT");
+				Godot.Vector2I cellCoord = new Godot.Vector2I(i - rows / 2, j - columns / 2);
+				SetTileCell(cellCoord, "DEFAULT");
 			}
 		}
 
 		PlaceMine();
 	}
 
-	private void SetTileCell(Godot.Vector2I cell_coord, string cell_type)
+	private void SetTileCell(Godot.Vector2I cellCoord, string cell_type)
 	{
-		SetCell(DEFAULT_LAYER, cell_coord, TILE_SET_ID, CELLS[cell_type]);
+		SetCell(DEFAULT_LAYER, cellCoord, TILE_SET_ID, CELLS[cell_type]);
 	}
 
 	private void PlaceMine()
@@ -119,6 +118,30 @@ public partial class mines_grid : TileMap
 
 		if (!isEmptyCell && !isFlagCell)
 			return;
+
+		if (isFlagCell)
+		{
+			SetTileCell(cellCoord, "DEFAULT");
+			cellsWithFlags.Remove(cellCoord);
+			GD.Print("ini cellsWithFlags");
+			GD.Print(cellsWithFlags);
+			flagsPlaced = flagsPlaced - 1;
+			GD.Print("ini flagsPlaced");
+			GD.Print(flagsPlaced);
+		}
+		else if (isEmptyCell)
+		{
+			if (flagsPlaced == numberOfMines)
+				return;
+
+			flagsPlaced = flagsPlaced + 1;
+			SetTileCell(cellCoord, "FLAG");
+			GD.Print("ini flagsPlaced");
+			GD.Print(flagsPlaced);
+			cellsWithFlags.Add(cellCoord);
+			GD.Print("ini cellsWithFlags");
+			GD.Print(cellsWithFlags);
+		}
 	}
 
 	private void OnCellClicked(Vector2I cellCoord)
