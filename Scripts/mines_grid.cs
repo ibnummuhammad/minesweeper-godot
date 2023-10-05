@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using System.Collections.Generic;
 
 public partial class mines_grid : TileMap
@@ -58,12 +57,6 @@ public partial class mines_grid : TileMap
 		}
 
 		PlaceMine();
-
-		foreach (var cell in cellsWithMines)
-		{
-			GD.Print(cell);
-		}
-		GD.Print("=====================");
 	}
 
 	private void SetTileCell(Godot.Vector2I cell_coord, string cell_type)
@@ -100,17 +93,17 @@ public partial class mines_grid : TileMap
 			return;
 		}
 
-		Vector2I clickedCellCoor = LocalToMap(GetLocalMousePosition());
+		Vector2I clickedCellCoord = LocalToMap(GetLocalMousePosition());
 
 		if (@event is InputEventMouseButton eventMouseButton)
 		{
 			if (eventMouseButton.ButtonIndex.ToString() == "Left")
 			{
-				OnCellClicked(clickedCellCoor);
+				OnCellClicked(clickedCellCoord);
 			}
 			else if (eventMouseButton.ButtonIndex.ToString() == "Right")
 			{
-				PlaceFlag(clickedCellCoor);
+				PlaceFlag(clickedCellCoord);
 			}
 			else
 				GD.Print(@event.GetType());
