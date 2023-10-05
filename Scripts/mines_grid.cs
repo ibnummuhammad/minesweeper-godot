@@ -76,9 +76,7 @@ public partial class mines_grid : TileMap
 			Vector2I cellCoordinates = new Vector2I(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
 
 			while (cellsWithMines.Contains(cellCoordinates))
-			{
 				cellCoordinates = new Vector2I(random.RandiRange(-rows / 2, rows / 2 - 1), random.RandiRange(-columns / 2, columns / 2 - 1));
-			}
 
 			cellsWithMines.Add(cellCoordinates);
 		}
@@ -92,23 +90,20 @@ public partial class mines_grid : TileMap
 
 	public override void _Input(InputEvent @event)
 	{
-		if (@event == new InputEventMouseButton() || !@event.IsPressed())
-		{
+		if (isGameFinished)
 			return;
-		}
+
+		if (@event == new InputEventMouseButton() || !@event.IsPressed())
+			return;
 
 		Vector2I clickedCellCoord = LocalToMap(GetLocalMousePosition());
 
 		if (@event is InputEventMouseButton eventMouseButton)
 		{
 			if (eventMouseButton.ButtonIndex.ToString() == "Left")
-			{
 				OnCellClicked(clickedCellCoord);
-			}
 			else if (eventMouseButton.ButtonIndex.ToString() == "Right")
-			{
 				PlaceFlag(clickedCellCoord);
-			}
 			else
 				GD.Print(@event.GetType());
 		}
@@ -161,13 +156,11 @@ public partial class mines_grid : TileMap
 		Variant cellHasMine = tileData.GetCustomData("has_mine");
 
 		foreach (var cell in cellsWithMines)
-		{
 			if (cell.X == cellCoord.X && cell.Y == cellCoord.Y)
 			{
 				Lose(cellCoord);
 				return;
 			}
-		}
 
 		cellsCheckedRecursively.Add(cellCoord);
 		HandleCells(cellCoord, true);
@@ -178,9 +171,7 @@ public partial class mines_grid : TileMap
 		TileData tileData = GetCellTileData(DEFAULT_LAYER, cellCoord);
 
 		if (tileData == null)
-		{
 			return;
-		}
 
 		bool cellHasMine = (bool)tileData.GetCustomData("has_mine");
 
@@ -194,9 +185,7 @@ public partial class mines_grid : TileMap
 			SetTileCell(cellCoord, "CLEAR");
 			var surroundingCells = GetSurroundingCellsToCheck(cellCoord);
 			foreach (var cell in surroundingCells)
-			{
 				HandleSurroundingCell(cell);
-			}
 		}
 		else
 			SetTileCell(cellCoord, mineCount.ToString());
@@ -221,9 +210,7 @@ public partial class mines_grid : TileMap
 			TileData tileData = GetCellTileData(DEFAULT_LAYER, cell);
 			if (tileData != null)
 				if (tileData.GetCustomData("has_mine").ToString() == "true")
-				{
 					mineCount = mineCount + 1;
-				}
 		}
 
 		return mineCount;
