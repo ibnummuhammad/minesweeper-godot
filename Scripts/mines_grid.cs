@@ -113,6 +113,8 @@ public partial class mines_grid : TileMap
 	private void PlaceFlag(Vector2I cellCoord)
 	{
 		TileData tileData = GetCellTileData(DEFAULT_LAYER, cellCoord);
+		Vector2I atlastCoordinates = GetCellAtlasCoords(DEFAULT_LAYER, cellCoord);
+		bool isEmptyCell = atlastCoordinates == new Vector2I(2, 2);
 	}
 
 	private void OnCellClicked(Vector2I cellCoord)
@@ -208,7 +210,6 @@ public partial class mines_grid : TileMap
 
 	private void Lose(Vector2I cellCoord)
 	{
-		GD.Print("BOMB!!");
 		// EmitSignal(nameof(GameLost));
 		isGameFinished = true;
 
