@@ -1,7 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1696514939
+::res://::1696586969
+game_state_manager.tscn::PackedScene::8227657458115853252::1696583884::0::1::::<><>::res://Scripts/GameStateManager.cs
 icon.svg::CompressedTexture2D::1240489467277767375::1695981224::1695981235::1::::<><>::
-main.tscn::PackedScene::8928700995194186473::1696432750::0::1::::<><>::uid://bfth2tppcxtvt::::res://Assets/minesweeper_atlas.png<>res://Scripts/mines_grid.cs
+main.tscn::PackedScene::8928700995194186473::1696583884::0::1::::<><>::uid://bfth2tppcxtvt::::res://Assets/minesweeper_atlas.png<>res://Scripts/mines_grid.cs<>uid://dphsk0ui1st7i::::res://game_state_manager.tscn
 minesweeper_atlas.png::CompressedTexture2D::3330788065952955872::1695983336::1695983336::1::::<><>::
 ::res://Assets/::1695983336
 button_cleared.png::CompressedTexture2D::68626179212048515::1695981330::1695981342::1::::<><>::
@@ -24,5 +25,6 @@ TileExploded.png::Texture2D::2380716498979362173::1695981330::1695983336::1::res
 TileFlag.png::Texture2D::7097147668196217608::1695981330::1695983336::1::res://minesweeper_atlas.png::<><>::uid://bnppufj5bocgm
 TileMine.png::Texture2D::1675582913816321183::1695981330::1695983336::1::res://minesweeper_atlas.png::<><>::uid://bnppufj5bocgm
 TileUnknown.png::Texture2D::7417992905797863780::1695981330::1695983336::1::res://minesweeper_atlas.png::<><>::uid://bnppufj5bocgm
-::res://Scripts/::1696254487
-mines_grid.cs::CSharpScript::-1::1696432465::0::1::::<><>::
+::res://Scripts/::1696522952
+GameStateManager.cs::CSharpScript::-1::1696522952::0::1::::<><>::
+mines_grid.cs::CSharpScript::-1::1696522286::0::1::::<><>::
